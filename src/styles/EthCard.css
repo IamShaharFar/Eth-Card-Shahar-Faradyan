@@ -1,0 +1,72 @@
+.bg-guardian{
+    background-image: url("https://wallpapers.com/images/hd/aesthetic-black-background-1920-x-1080-0kfw21pdqoj5trap.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+}
+
+.card{
+    width: 80vh;
+    height:auto;
+    background-image: url("./bg.png");
+    background-repeat: no-repeat;
+    background-size:auto;
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3); 
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+}
+
+.eth-img{
+    height: 40px;
+}
+
+.eth-span{
+
+    right: 0px;
+    color: var(--silver);
+}
+
+.card-body{
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.card-title{
+    position: relative;
+}
+
+.price-change{
+    position: absolute;
+    right: 10px;
+}
+
+.title{
+    color: var(--eth-blue);
+}
+
+.price{
+    color: var(--eth-blue);
+}
+
+.form-control{
+    background-color: transparent;
+    color: white;
+}
+
+.form-control:focus{
+    background-color: transparent;
+    color: white;
+}
+
+.conversion div h6{
+    color: var(--eth-blue);
+}
+
+.conversion-label{
+    color: var(--gold);
+}

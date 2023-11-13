@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import EthCard from "./components/EthCard";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [firstPrice, setFirstPrice] = useState(null);
+  const [lastPrice, setLastPrice] = useState(null);
+  const [updated, setUpdated] = useState(null)
+
+  useEffect(() => {
+    getPrices();
+  }, []);
+
+  function getPrices() {
+    fetch(
+      "https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=1"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const prices = data.prices;
+        const firstPrice = prices[0];
+        const lastPrice = prices[prices.length - 1];
+        setFirstPrice(firstPrice);
+        setLastPrice(lastPrice);
+        setUpdated(Date.now())
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <EthCard
+        today_price={firstPrice ? firstPrice[1] : null}
+        yesterday_price={lastPrice ? lastPrice[1] : null}
+        updated_time={updated? updated :null}
+      />
     </div>
   );
 }
